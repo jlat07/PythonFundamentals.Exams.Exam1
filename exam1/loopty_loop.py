@@ -23,6 +23,6 @@ def generate_list_with_strategy(start: int, stop: int, step: int, strategy: Call
     :param strategy: A function to manipulate each digit .
     :return: A list of integers.
     """
-    list(range(start, stop, step, callable(strategy)))
-    
+    list = list(range(start, stop, step)
+    list =[(strategy) for x in list]
     return list
