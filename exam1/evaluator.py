@@ -11,10 +11,9 @@ def find_lowest_value(list_in: List[N]) -> N:
     :param list_in: A list of numbers (integers and/or floats)
     :return: The lowest number in the list
     """
-    sorted_list = list_in.sort()
+    sorted_list = sorted(list_in)
     
     return sorted_list[0]
-
 
 
 def find_highest_value(list_in: List[N]) -> N:
@@ -25,7 +24,7 @@ def find_highest_value(list_in: List[N]) -> N:
     :return: The highest number in the list
     """
     list_in.sort(reverse=True)
-
+    
     return list_in[0]
 
 
@@ -39,13 +38,12 @@ def find_value(value_to_find, values: C) -> int:
     :param values: A List or a Set.
     :return: an integer. Either the index where the value exists or -1
     """
-
+    
     if value_to_find in values:
         index = values.index(value_to_find)
         return index
     else:
         return -1
-
 
 
 def compare_two_numbers(a: N, b: N) -> int:
@@ -60,15 +58,13 @@ def compare_two_numbers(a: N, b: N) -> int:
     :param b: The second number.
     :return: an integer 0, 1, or -1
     """
-    result = (a - b)
-    if a == b:
-        return result
-    if a - b == 1:
-        return result
-    if a - b == -1:
-        return result
-    
 
+    if a == b:
+        return 0
+    if a >= b:
+        return 1
+    if a <= b:
+        return -1
 
 def compare_two_strings(a: str, b: str) -> int:
     """
@@ -100,7 +96,9 @@ def find_common(tuple_a: Tuple, tuple_b: Tuple) -> Set:
     :param tuple_b: The second tuple.
     :return: A set containing items common on both tuples.
     """
-    recognize index of matching items, then zip them together
+    common = (set(tuple_a) & set(tuple_b))
+    
+    return common
 
 
 def find_duplicates(tuple_in: Tuple) -> List:
@@ -110,5 +108,14 @@ def find_duplicates(tuple_in: Tuple) -> List:
     :param tuple_in: A tuple
     :return: a A list containing duplicate items in the tuple_in parameter
     """
-    for loop that iterates through tuple and sets each index = to each other, compares if they are equal
-    and then store them in a list if that is true
+    lst = []
+    for i in tuple_in:
+        if tuple_in.count(i) > 1:
+            lst.append(i)
+        else:
+            continue
+    
+    for i in lst:
+        while lst.count(i) >1:
+            lst.remove(i)
+    return sorted(lst)
